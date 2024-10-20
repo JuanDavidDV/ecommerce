@@ -1,17 +1,36 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
 
-    <%= render @product %>
-
-    <% if current_admin %>
-      <%= link_to "Edit this product", edit_product_path(@product), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      <%= link_to "Back to products", products_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      <div class="inline-block ml-2">
-        <%= button_to "Destroy this product", @product, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+<div class="max-w-7xl x-full mx-auto px-10 mb-5">
+  <%= link_to "Products ->", products_path, class: "rounded-lg py-3 px-5 bg-yellow-300 font-medium hover:text-green-500" %>
+  <%= link_to "#{@product.name}", @product, class: "rounded-lg py-3 px-5 bg-yellow-300 font-medium" %>
+</div>
+<div class="grid grid-cols-2">
+    <div class="max-w-md w-full mx-auto">
+      <%= image_tag @product.images.first, class: "w-full h-96 object-cover" %>
+      <div class="grid grid-cols-3 gap-4 mt-4">
+        <% @product.images[1..].each do |image| %>
+          <%= image_tag image, class: "w-full h-32 object-cover" %>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+    <div class="max-w-xl">
+      <h1 class="text-5xl font-Jersey text-sky-700"> <%= @product.name %> </h1>
+      <div class="mt-6 bg-blue-100/75 rounded-lg p-4"> 
+        <%= @product.description %>
+      </div>
+      <br/>
+      <span class="bg-green-500 p-2 rounded-lg text-green-50"> <%= number_to_currency @product.price %> </span>
+    </div>
+
+</div>
+  <% if current_admin %> <!--Buttons are only visible for admin user-->
+    <div class="w-full flex justify-center items-center mt-10 gap-4">
+      <%= link_to "Edit this product", edit_product_path(@product), class: "rounded-lg py-3 px-5 bg-red-200 inline-block font-medium" %>
+      <%= link_to "Back to products", products_path, class: "rounded-lg py-3 px-5 bg-red-200 inline-block font-medium" %>
+      <%= button_to "Destroy this product", @product, method: :delete, class: "rounded-lg py-3 px-5 bg-red-200 font-medium" %>
+    </div>
+  <% end %>
 </div>

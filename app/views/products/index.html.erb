@@ -3,19 +3,14 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <% content_for :title, "Products" %>
+  <% content_for :title, "Products" %>  <!--Setups tap title to Products-->
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Products</h1>
-    <%= link_to "New product", new_product_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
 
-  <div id="products" class="min-w-full">
+    <h1 class="font-bold text-7xl text-center font-jersey text-sky-700">Products</h1>
+
+  <div id="products" class="min-w-full grid grid-cols-4 gap-6">
     <% @products.each do |product| %>
       <%= render product %>
-      <p>
-        <%= link_to "Show this product", product, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
     <% end %>
   </div>
 </div>

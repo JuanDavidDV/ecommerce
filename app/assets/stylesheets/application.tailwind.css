@@ -11,3 +11,11 @@
 }
 
 */
+@layer components {
+  @font-face {
+    font-family: "Jersey";
+    src: url(../../../public/fonts/jersey_m54/Jersey\ M54.ttf);
+  }
+}
+
+@import 'actiontext.css'

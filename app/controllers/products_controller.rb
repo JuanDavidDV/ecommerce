@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :check_admin_privilege, except: ["index", "show"] #Will exclude only index and show actions to go through check_admin_privilege. This to protect the application from Hackers.
   before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json

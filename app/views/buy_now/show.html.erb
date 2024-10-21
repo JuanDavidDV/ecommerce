@@ -1,0 +1,4 @@
+<div class="w-full flex flex-col items-center pt-8">
+    <h1 class="text-5xl font-Jersey text-sky-700"> <%= @product.name %> </h1>
+    <%=image_tag(@product.images.first, class: "max-w-xl w-full h-97 object-cover rounded-lg") if @product.images.any? %>
+</div>

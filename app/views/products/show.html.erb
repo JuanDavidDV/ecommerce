@@ -5,16 +5,19 @@
 
 <div class="max-w-7xl x-full mx-auto px-10 mb-5">
   <%= link_to "Products ->", products_path, class: "rounded-lg py-3 px-5 bg-yellow-300 font-medium hover:text-green-500" %>
+  <%= link_to "#{@product.category.name}->", @product.category, class: "rounded-lg py-3 px-5 bg-yellow-300 font-medium hover:text-green-500" if @product.category %>
   <%= link_to "#{@product.name}", @product, class: "rounded-lg py-3 px-5 bg-yellow-300 font-medium" %>
 </div>
 <div class="grid grid-cols-2">
     <div class="max-w-md w-full mx-auto">
+    <% if @product.images.any? %>
       <%= image_tag @product.images.first, class: "w-full h-96 object-cover" %>
       <div class="grid grid-cols-3 gap-4 mt-4">
         <% @product.images[1..].each do |image| %>
           <%= image_tag image, class: "w-full h-32 object-cover" %>
         <% end %>
       </div>
+    <% end %>
     </div>
     <div class="max-w-xl">
       <h1 class="text-5xl font-Jersey text-sky-700"> <%= @product.name %> </h1>

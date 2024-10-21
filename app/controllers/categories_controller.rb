@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :check_admin_privilege, except: ["index", "show"] #Will exclude only index and show actions to go through check_admin_privilege. This to protect the application from Hackers.
   before_action :set_category, only: %i[ show edit update destroy ]
 
   # GET /categories or /categories.json

@@ -8,9 +8,13 @@
 
   <h1 class="font-bold text-7xl text-center font-jersey text-sky-700 pb-8">Top Products</h1>
 
-  <div id="products" class="min-w-full grid grid-cols-4 gap-6">
+  <div id="products" class="min-w-full grid md:grid-cols-4 gap-6">
     <% @products.each do |product| %>
       <%= render product %>
     <% end %>
+  </div>
+
+  <div class="mt-5 w-full">
+    <%= link_to "Shop by Categories", categories_path, class:  "rounded-lg h64 w-full bg-indigo-500 text-xl text-white p-3" %>
   </div>
 </div>

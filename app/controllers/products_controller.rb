@@ -37,8 +37,10 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1 or /products/1.json
   def update
+    new_product_params = product_params.to_unsafe_h #Method called from ActionConttoller parameters object. It converts paramater into regular Ruby hash, allowing access to all parameter without strong parameters restringtions
+    new_product_params.delete("images") if new_product_params["images"].all?(&:blank?) #If the Images paramas from the product hash is blank, then delete images. Otherwise, do not delete images if User does not upload new images in the form
     respond_to do |format|
-      if @product.update(product_params)
+      if @product.update(new_product_params)
         format.html { redirect_to @product, notice: "Product was successfully updated." }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -66,6 +68,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.expect(product: [ :name, :description, :price, images: [] ])
+      params.expect(product: [ :name, :description, :price, :category_id, images: [] ])
     end
 end

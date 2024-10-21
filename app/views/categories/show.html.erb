@@ -12,6 +12,12 @@
     <%= @category.description %>
   </div>
 
+    <div id="products" class="min-w-full grid grid-cols-4 gap-6">
+    <% @category.products.each do |product| %>
+      <%= render "products/product", product: product %>
+    <% end %>
+  </div>
+
   <% if current_admin %>
   <div class="w-full flex justify-center items-center mt-16 gap-4">
     <%= link_to "Edit this category", edit_category_path(@category), class: "rounded-lg py-3 px-5 bg-yellow-100 inline-block font-medium" %>

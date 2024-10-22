@@ -67,3 +67,5 @@ end
 gem "devise", "~> 4.9"
 
 gem "tailwind_devise", "~> 0.0.1"
+
+gem "stripe", "~> 13.0"

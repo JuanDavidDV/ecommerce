@@ -15,7 +15,12 @@
 
     <div id="products" class="min-w-full grid md:grid-cols-4 gap-6">
         <% @current_cart.products.each do |product| %>
-            <%= render "products/product", product: product %>
+            <div>
+                <%= render "products/product", product: product %>
+                <br/>
+                <%= link_to "Remove From Cart", cart_path(@current_cart.secret_id, product_id: product.id), class: "p-2 rounded-lg bg-red-400/80 hover:bg-red-600", 
+                    data: { turbo_method: "delete" }  %>
+            </div>
         <% end %>
     </div>
 </div>

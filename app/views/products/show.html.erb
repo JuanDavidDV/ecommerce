@@ -4,8 +4,8 @@
   <% end %>
 
   <div class="max-w-7xl x-full mx-auto px-10 mb-5">
-    <%= link_to "Products ->", products_path, class: "rounded-lg py-2 px-1 font-medium hover:text-green-500" %>
-    <%= link_to "#{@product.category.name}->", @product.category, class: "rounded-lg py-2 px-1 font-medium hover:text-green-500" if @product.category %>
+    <%= link_to "Products ->", products_path, class: "rounded-lg py-2 px-1 font-medium text-blue-700/90 hover:text-yellow-800" %>
+    <%= link_to "#{@product.category.name}->", @product.category, class: "rounded-lg py-2 px-1 font-medium text-blue-700/90 hover:text-yellow-800" if @product.category %>
     <%= link_to "#{@product.name}", @product, class: "rounded-lg py-2 px-1 font-medium" %>
   </div>
   <div class="grid md:grid-cols-2 gap-5">
@@ -28,7 +28,7 @@
     <span class="bg-green-500 p-2 rounded-lg text-green-50 mr-auto"> <%= number_to_currency @product.price %> </span>
     <div class="flex justify-between gap-8">
       <%= link_to "Buy Now", product_buy_now_path(@product), class: "rounded-lg font-semi-bold p-4 text-center text-xl bg-blue-600 hover:bg-green-500 text-white w-full mr-auto" %>
-      <div id="add-to-cart">
+      <div id="add-to-cart" class="w-full">
         <%= render "add_to_cart", product: @product %>
       </div>
     </div>

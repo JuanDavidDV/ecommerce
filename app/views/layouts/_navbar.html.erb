@@ -6,14 +6,7 @@
         <% end %>
 
         <%= link_to cart_path(@current_cart.secret_id) do %>
-            <div class="relative">
-                <%= image_tag("cart-store.png", class: "w-10 object-cover") %>  
-                <% if @current_cart && @current_cart.cart_items.any? %>    
-                    <div class="absolute -top-1 -right-3 bg-white border border-black px-1.5 text-sm rounded-lg">
-                        <%= @current_cart.cart_items.count %>
-                    </div>
-                <% end %>
-            </div>
+            <%= render "layouts/cart", cart: @current_cart %>
         <% end %>
     </div>
 </div>

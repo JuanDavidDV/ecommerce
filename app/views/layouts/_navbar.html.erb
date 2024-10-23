@@ -1,9 +1,19 @@
-<div class="h-16 w-full fixed top-0 bg-amber-500 z-50"> 
+<div class="h-16 w-full fixed top-0 bg-blue-400 z-50"> 
     <div class="max-w-7xl h-full w-full mx-auto flex items-center justify-between px-8"> 
         <%= link_to root_path, class: "flex items-end gap-4" do %>
             <%= image_tag("online-shopping.png", class: "w-10 object-cover") %>
             <span class="text-2xl text-yellow-100">RoR Ecommerce</span>
         <% end %>
-        <%= image_tag("cart-store.png", class: "w-10 object-cover") %>
+
+        <%= link_to cart_path(@current_cart.secret_id) do %>
+            <div class="relative">
+                <%= image_tag("cart-store.png", class: "w-10 object-cover") %>  
+                <% if @current_cart && @current_cart.cart_items.any? %>    
+                    <div class="absolute -top-1 -right-3 bg-white border border-black px-1.5 text-sm rounded-lg">
+                        <%= @current_cart.cart_items.count %>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
     </div>
 </div>

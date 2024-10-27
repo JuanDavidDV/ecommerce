@@ -2,7 +2,7 @@
     <div class="h-80 w-full mb-8 flex flex-col items-center gap-4 bg-no-repeat bg-cover" style="background-image: url('<%= asset_path('box.gif') %>')">
         <div class="bg-gray-800 bg-opacity-50"> 
             <h2 class="text-5xl font-semiboldb text-green-400 text-center">Purchase has been successfully completed</h2>
-            <p class="text-xl font-semibold text-white text-center">All of your products will be shipped within 3 business days!</p>
+            <p class="text-xl font-semibold text-white text-center">All your products will be shipped within 3 business days!</p>
         </div>
     </div>
     <h1 class="text-5xl font-Jersey text-sky-700 font-bold mb-3 text-center"> <%= @purchased_cart.products.map(&:name).join(", ") %> </h1>

@@ -2,13 +2,22 @@
     <div class="max-w-7xl h-full w-full mx-auto flex items-center justify-between px-8"> 
         <%= link_to root_path, class: "flex items-end gap-1" do %>
             <%= image_tag("online-shopping.png", class: "w-10 object-cover") %>
-            <span class="text-2xl text-yellow-100">RoR Ecommerce</span>
+            <span class="text-m text-yellow-100 md:text-2xl">RoR Ecommerce</span>
         <% end %>
 
-        <div class="flex items-center gap-6">
-            <div >
+        <div>
+            <% if current_admin %>
+                <%= link_to "Admin Mode", admin_path, class: "bg-red-500 text-white rounded-lg p-1 hover:bg-green-400" %>
+            <% end %>
+        </div>
+
+        <div class="flex items-center gap-1 md:gap-6">
+            <div>
                 <% if current_user %>
-                    <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-white" %>
+                    <div class="flex gap-6">
+                        <p class="text-white">Welcome: <%= current_user.email %></p>
+                        <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-white hover:text-red-600" %>
+                    </div>
                 <% else %> 
                     <%= link_to "Login", new_user_session_path, class: "bg-green-500 text-white rounded-lg px-4 py-1 hover:bg-green-600" %> 
                     <%= link_to "Sign Up", new_user_registration_path, class: "text-white text-lg hover:text-yellow-400" %>  

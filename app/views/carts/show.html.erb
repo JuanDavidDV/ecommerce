@@ -17,7 +17,7 @@
         <% end %>
     </div>
 
-    <div id="products" class="min-w-full grid md:grid-cols-4 gap-6">
+    <div id="products" class="min-w-full grid md:grid-cols-4 gap-6 mb-8">
         <% if @current_cart&.products&.any? %>
             <% @current_cart.products.each do |product| %>
                 <div>
@@ -29,4 +29,10 @@
             <% end %>
         <% end %>
     </div>
+
+    <br/>
+
+    <% if !current_user %>
+        <%=link_to "Sign in to save your cart for later", new_user_session_path, class: "text-lg font-semibold hover:text-green-600 border-b-2 border-black hover:border-green-600" %>
+    <% end %>
 </div>

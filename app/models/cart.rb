@@ -1,4 +1,5 @@
 class Cart < ApplicationRecord
+  belongs_to :user, optional: true
   has_many :cart_items, dependent: :destroy #Deletes children
   has_many :products, through: :cart_items
 

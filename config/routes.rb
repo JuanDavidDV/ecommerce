@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resource :buy_now, only: [:show, :create], controller: :buy_now do          #By default :create uses POST requests
       get "success", on: :collection
     end
+    collection do
+      get :export_csv, defaults: { format: "csv" }
+    end
   end
 
   resource :cart, only: [:show, :destroy, :create] do

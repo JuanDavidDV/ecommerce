@@ -81,7 +81,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: ecommerce_rails_production
+    database: <%= ENV["DATABASE_URL"] %>
     username: ecommerce_rails
     password: <%= ENV["ECOMMERCE_RAILS_DATABASE_PASSWORD"] %>
   cache:

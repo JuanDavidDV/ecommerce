@@ -27,6 +27,9 @@
       <% end %>
       <div class="flex flex-col items-center mt-4 gap-4">
         <%= render "devise/shared/links" %>
+        <% if resource_name == :user %>
+          <%= link_to "Admin", new_admin_session_path %>
+        <% end %>
       </div>
     </div>
   </div>

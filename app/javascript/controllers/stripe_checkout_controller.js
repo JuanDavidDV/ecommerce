@@ -6,6 +6,7 @@ export default class extends Controller {
   static values = { url: String }
 
   async connect() {
+    if (this.checkout) return;
     let publicKey = document.head.querySelector("meta[name='stripe-public-key']").content
     const stripe = Stripe(publicKey);
     const fetchClientSecret = async () => {
@@ -25,6 +26,9 @@ export default class extends Controller {
   }
 
   async disconnect () {
-    this.checkout.unmount();
+      if (this.checkout) {
+        this.checkout.unmount();
+        this.checkout = null; // Clean up after unmount
+    }
   }
 }

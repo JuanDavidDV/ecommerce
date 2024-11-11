@@ -7,12 +7,14 @@ export default class extends Controller {
 
   async connect() {
     let publicKey = document.head.querySelector("meta[name='stripe-public-key']").content
-    const stripe = Stripe('<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>');
+    const stripe = Stripe(publicKey);
     const fetchClientSecret = async () => {
-      const response = await post(this.urlValue)
-      const { clientSecret } = await response.json;
+      // Make a POST request to the provided URL
+      const response = await post(this.urlValue);
+      const { clientSecret } = await response.json(); // Await the JSON response and extract the clientSecret
       return clientSecret;
     };
+    
   
     const checkout = await stripe.initEmbeddedCheckout({
       fetchClientSecret,

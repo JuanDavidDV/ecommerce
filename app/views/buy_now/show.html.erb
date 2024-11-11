@@ -1,7 +1,7 @@
-<div class="grid md:grid-cols-2">
+<div class="grid md:grid-cols-2 mb-10">
     <div class="w-full flex flex-col items-center md:pt-8">
         <h1 class="text-5xl font-Jersey text-sky-700 text-center"> <%= @product.name %> </h1>
-        <%=image_tag(@product.images.first, class: "w-full h-86 object-cover rounded-lg") if @product.images.any? %>
+        <%=image_tag(@product.images.first, class: "w-full h-86 object-cover rounded-lg mt-5") if @product.images.any? %>
         <div class="max-w-2xl w-full">
             <div class="mt-6 bg-blue-100/75 rounded-lg p-4"> 
                 <%= @product.description %>

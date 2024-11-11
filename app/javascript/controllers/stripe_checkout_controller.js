@@ -11,7 +11,7 @@ export default class extends Controller {
     const fetchClientSecret = async () => {
       // Make a POST request to the provided URL
       const response = await post(this.urlValue);
-      const { clientSecret } = await response.json(); // Await the JSON response and extract the clientSecret
+      const { clientSecret } = await response.json; // Await the JSON response and extract the clientSecret
       return clientSecret;
     };
     

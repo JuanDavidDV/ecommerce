@@ -27,7 +27,7 @@ export default class extends Controller {
 
   async disconnect () {
       if (this.checkout) {
-        this.checkout.unmount();
+        this.checkout.destroy();
         this.checkout = null; // Clean up after unmount
     }
   }

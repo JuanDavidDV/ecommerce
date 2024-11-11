@@ -16,11 +16,15 @@ export default class extends Controller {
     };
     
   
-    const checkout = await stripe.initEmbeddedCheckout({
+    this.checkout = await stripe.initEmbeddedCheckout({
       fetchClientSecret,
     });
   
     // Mount Checkout
-    checkout.mount(this.element);
+    this.checkout.mount(this.element);
+  }
+
+  async disconnect () {
+    this.checkout.unmount();
   }
 }

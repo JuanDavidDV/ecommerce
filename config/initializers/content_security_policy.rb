@@ -23,8 +23,3 @@
 #   # Report violations without enforcing the policy.
 #   # config.content_security_policy_report_only = true
 # end
-Rails.application.config.content_security_policy do |policy|
-  policy.default_src :self
-  policy.script_src :self, "https://js.stripe.com"
-  policy.connect_src :self, "https://api.stripe.com"
-end

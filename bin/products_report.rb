@@ -7,11 +7,11 @@ class ProductReport
   end
 
   def call
-    # products_report_csv   # Generates csv report
+    products_report_csv   # Generates csv report
 
     delete_products_records   # Deletes all records from Product table
 
-    # import_products_csv   #Imports products from csv generated
+    import_products_csv   #Imports products from csv generated
   end
 
 

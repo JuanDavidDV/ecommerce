@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :categories
   devise_for :admins
   resources :products do
-    resource :buy_now, only: [:show, :create], controller: :buy_now do          #By default :create uses POST requests
+    resource :buy_now, only:  [:show, :create ], controller: :buy_now do          #By default :create uses POST requests
       get "success", on: :collection
     end
     collection do
@@ -16,8 +16,8 @@ Rails.application.routes.draw do
     post "stripe_session", on: :member, to: "carts#stripe_session"
     get "success", on: :member, to: "carts#success"
   end
-  
-  resource :admin, only: [:show], controller: :admin
+
+  resource :admin, only: [ :show ], controller: :admin
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

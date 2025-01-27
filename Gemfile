@@ -68,3 +68,5 @@ gem "tailwind_devise", "~> 0.0.1"
 gem "stripe", "~> 13.0"
 
 gem "aws-sdk-s3", require: false
+
+gem "chartkick"

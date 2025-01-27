@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     get "success", on: :member, to: "carts#success"
   end
 
+  get "dashboard", to: "dashboard#index"
+
   resource :admin, only: [ :show ], controller: :admin
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -8,3 +8,6 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
 pin "@rails/request.js", to: "@rails--request.js.js" # @0.0.11
+pin "chartkick", to: "chartkick.js" # @5.0.1
+pin "Chart.bundle", to: "Chart.bundle.js"
+

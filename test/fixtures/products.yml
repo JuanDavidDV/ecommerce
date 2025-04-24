@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  price: 9.99
+  name: Soccer
+  price: 80.50
 
 two:
-  name: MyString
-  price: 9.99
+  name: Basketball
+  price: 100

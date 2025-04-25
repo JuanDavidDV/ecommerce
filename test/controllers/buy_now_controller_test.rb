@@ -10,4 +10,10 @@ class BuyNowControllerTest < ActionDispatch::IntegrationTest
     get product_buy_now_url(@product)
     assert_equal "Soccer", @product.name
   end
+
+  test "should handle product not found" do
+    invalid_id = Product.maximum(:id).to_i + 1
+    get product_buy_now_url(product_id: invalid_id)
+    assert_response :not_found
+  end
 end

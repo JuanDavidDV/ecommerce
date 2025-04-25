@@ -16,4 +16,9 @@ class BuyNowControllerTest < ActionDispatch::IntegrationTest
     get product_buy_now_url(product_id: invalid_id)
     assert_response :not_found
   end
+
+  test "should get success page" do
+    get success_product_buy_now_url(@product)
+    assert_select "h2", text: "Purchase has been successfully completed"
+  end
 end

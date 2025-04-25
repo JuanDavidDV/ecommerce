@@ -3,7 +3,9 @@
 one:
   name: Soccer
   price: 80.50
+  id: 1
 
 two:
   name: Basketball
   price: 100
+  id: 2

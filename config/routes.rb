@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :cart, only: [:show, :destroy, :create] do
+  resource :cart, only: [ :show, :destroy, :create ] do
     get "checkout", on: :collection, to: "carts#checkout"
     post "stripe_session", on: :member, to: "carts#stripe_session"
     get "success", on: :member, to: "carts#success"

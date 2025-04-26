@@ -9,5 +9,9 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     @empty_cart = Cart.create
   end
 
-
+  test "should create a new cart when none exists" do
+    assert_difference("Cart.count", 1) do
+      post cart_url, params: { product_id: @product.id }
+    end
+  end
 end

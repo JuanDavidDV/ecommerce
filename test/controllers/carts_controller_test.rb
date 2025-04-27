@@ -15,8 +15,13 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "create should add product to cart" do
+  test "should add product to cart" do
     post cart_url, params: { product_id: @product.id }, headers: { "Cookie" => "current_cart_id=#{@cart.secret_id}" }
     assert_equal @product.id, @cart.reload.cart_items.last.product_id
+  end
+
+  test "should get show page" do
+    get cart_url(@cart.secret_id)
+    assert_response :success
   end
 end

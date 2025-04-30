@@ -31,5 +31,10 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should remove item "
+  test "should redirect to checkout if cart is empty" do
+    post cart_path(product_id: @product.id) # Simulates post request to create a cart and set the session
+    CartItem.delete_all
+    get checkout_cart_path
+    assert_redirected_to root_path
+  end
 end

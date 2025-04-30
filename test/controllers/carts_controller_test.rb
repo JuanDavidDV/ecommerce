@@ -13,8 +13,14 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should sets session current_cart_id after creating a cart" do
+  test "should set session current_cart_id after creating a cart" do
     post cart_path, params: { product_id: @product.id }
     assert_not_nil session[:current_cart_id]
+  end
+
+  test "should add product to newly created cart" do
+    post cart_path, params: { product_id: @product.id }
+    cart = Cart.find_by(secret_id: session[:current_cart_id])
+    assert_equal @product.id, cart.cart_items.last.product_id
   end
 end

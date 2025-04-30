@@ -13,7 +13,7 @@ class CartsController < ApplicationController
 
   def checkout
     if !@current_cart&.cart_items&.any?
-      redirect_to root_path, notice: "Yoiu don't have any items in your cart yet!"
+      redirect_to root_path, notice: "You don't have any items in your cart yet!"
     end
   end
 

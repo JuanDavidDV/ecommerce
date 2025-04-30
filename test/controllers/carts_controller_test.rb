@@ -13,7 +13,7 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "sets session current_cart_id after creating a cart" do
+  test "should sets session current_cart_id after creating a cart" do
     post cart_path, params: { product_id: @product.id }
     assert_not_nil session[:current_cart_id]
   end

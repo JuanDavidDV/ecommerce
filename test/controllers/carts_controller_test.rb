@@ -37,4 +37,11 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     get checkout_cart_path
     assert_redirected_to root_path
   end
+
+  test "should show flash message when cart is empty on checkout" do
+    post cart_path(product_id: @product.id) # Simulates post request to create a cart and set the session
+    CartItem.delete_all
+    get checkout_cart_path
+    assert_equal "You don't have any items in your cart yet!", flash[:notice]
+  end
 end

@@ -23,4 +23,11 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     cart = Cart.find_by(secret_id: session[:current_cart_id])
     assert_equal @product.id, cart.cart_items.last.product_id
   end
+
+  test "should add product to existing cart" do
+    post cart_path(product_id: @product.id) # Simulates post request to create a cart and set the session
+    assert_difference("CartItem.count", 1) do
+      post cart_path(product_id: @product.id)
+    end
+  end
 end

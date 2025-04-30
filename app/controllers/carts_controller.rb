@@ -4,7 +4,7 @@ class CartsController < ApplicationController
     if !@current_cart
       @current_cart = Cart.create
       session[:current_cart_id] = @current_cart.secret_id
-    end 
+    end
     @current_cart.cart_items.create(product_id: @product.id)
   end
 
@@ -60,5 +60,4 @@ class CartsController < ApplicationController
   def set_product
     @product = Product.find(params[:product_id])
   end
-
 end

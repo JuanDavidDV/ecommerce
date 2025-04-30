@@ -30,4 +30,6 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
       post cart_path(product_id: @product.id)
     end
   end
+
+  test "should remove item "
 end

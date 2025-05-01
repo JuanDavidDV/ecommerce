@@ -4,6 +4,12 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @category = categories(:one)
     @admin = admins(:one)
+
+    @category.images.attach(
+      io: File.open(Rails.root.join("test/fixtures/files/images/t-shirt.jpg")),
+      filename: "t-shirt.jpg",
+      content_type: "image/jpg"
+    )
   end
 
   test "should get index of categories" do
@@ -24,8 +30,11 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create category" do
     sign_in @admin
+
+    image_file = fixture_file_upload("images/t-shirt.jpg")
+
     assert_difference("Category.count", 1) do
-      post categories_url, params: { category: { name: @category.name } }
+      post categories_url, params: { category: { name: @category.name, images: image_file } }
     end
   end
 

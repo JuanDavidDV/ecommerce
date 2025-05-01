@@ -1,11 +1,23 @@
 require "test_helper"
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
+  def attach_multiple_test_images(category, filenames)
+    category.images.attach(
+      filenames.map do |image|
+        {
+          io: File.open(Rails.root.join("test/fixtures/files/images/#{image}")),
+          filename: image,
+          content_type: "image/jpg"
+        }
+      end
+    )
+  end
+
   setup do
     @product = products(:one)
     @admin = admins(:one)
 
-    @product
+    attach_multiple_test_images(@product, [ "people-tshirts.jpg", "red-tshirts.jpg", "single-tshirt.jpg" ])
   end
 
   test "should get index of the products" do
@@ -26,6 +38,6 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create product" do
     sign_in @admin
-    assert_difference
+    assert_difference("")
   end
 end

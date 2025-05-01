@@ -4,6 +4,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @product = products(:one)
     @admin = admins(:one)
+
+    @product
   end
 
   test "should get index of the products" do

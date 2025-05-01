@@ -52,7 +52,10 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update category" do
     sign_in @admin
-    patch category_url(@category), params: { category: { name: "Updated Test" } }
+
+    image_file = fixture_file_upload("images/authentic_fossil.jpg")
+
+    patch category_url(@category), params: { category: { name: "Updated Test", images: image_file } }
     assert_equal "Updated Test", @category.reload.name
   end
 

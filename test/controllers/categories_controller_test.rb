@@ -36,6 +36,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
+    sign_in @admin
     get edit_category_url(@category)
     assert_response :success
   end

@@ -27,7 +27,11 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Category.count", 1) do
       post categories_url, params: { category: { name: @category.name } }
     end
+  end
 
+  test "should redirect after category create" do
+    sign_in @admin
+    post categories_url, params: { category: { name: @category.name } }
     assert_redirected_to category_url(Category.last)
   end
 

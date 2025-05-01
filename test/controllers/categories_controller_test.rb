@@ -42,8 +42,9 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update category" do
-    patch category_url(@category), params: { category: { name: @category.name } }
-    assert_redirected_to category_url(@category)
+    sign_in @admin
+    patch category_url(@category), params: { category: { name: "Updated Test" } }
+    assert_equal "Updated Test", @category.reload.name
   end
 
   test "should destroy category" do

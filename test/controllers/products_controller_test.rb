@@ -15,4 +15,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     get product_url(@product)
     assert_response :success
   end
+
+  test "should get form to create a new product" do
+    sign_in @admin
+    get new_product_url
+    assert_response :success
+  end
 end

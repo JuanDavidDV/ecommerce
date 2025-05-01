@@ -60,4 +60,11 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
       delete category_url(@category)
     end
   end
+
+  test "should redirect after destroy a category" do
+    sign_in @admin
+    @category.products.destroy_all
+    delete category_url(@category)
+    assert_redirected_to categories_url
+  end
 end

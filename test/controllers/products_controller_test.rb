@@ -1,7 +1,7 @@
 require "test_helper"
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
-  def attach_multiple_test_images(category, filenames)
+  def attach_multiple_test_images(category, filenames)  # Initialize a product with their images
     category.images.attach(
       filenames.map do |image|
         {
@@ -11,6 +11,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         }
       end
     )
+  end
+
+  def attach_product_images(images) # Used for create and update tests
+    images.map do |image|
+      fixture_file_upload("images/#{image}")
+    end
   end
 
   setup do
@@ -38,6 +44,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create product" do
     sign_in @admin
-    assert_difference("")
+    assert_difference("Product.count", 1) do
+      post products_url, params: { product: { name: @product.name, images: attach_product_images([ "people-tshirts.jpg", "red-tshirts.jpg", "single-tshirt.jpg" ]) } }
+    end
   end
 end

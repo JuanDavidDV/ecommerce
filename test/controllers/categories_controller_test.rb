@@ -6,17 +6,17 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     @admin = admins(:one)
   end
 
-  test "should get index" do
+  test "should get index of categories" do
     get categories_url
     assert_response :success
   end
 
-  test "should show category" do
+  test "should show a category" do
     get category_url(@category)
     assert_response :success
   end
 
-  test "should get new" do
+  test "should get new category form" do
     sign_in @admin
     get new_category_url
     assert_response :success

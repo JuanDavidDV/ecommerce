@@ -3,6 +3,7 @@ require "test_helper"
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @category = categories(:one)
+    @admin = admins(:one)
   end
 
   test "should get index" do
@@ -10,7 +11,13 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should show category" do
+    get category_url(@category)
+    assert_response :success
+  end
+
   test "should get new" do
+    sign_in @admin
     get new_category_url
     assert_response :success
   end
@@ -21,11 +28,6 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to category_url(Category.last)
-  end
-
-  test "should show category" do
-    get category_url(@category)
-    assert_response :success
   end
 
   test "should get edit" do

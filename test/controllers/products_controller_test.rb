@@ -21,4 +21,9 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     get new_product_url
     assert_response :success
   end
+
+  test "should create product" do
+    sign_in @admin
+    assert_difference
+  end
 end

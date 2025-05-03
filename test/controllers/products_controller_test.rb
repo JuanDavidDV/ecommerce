@@ -54,4 +54,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     post products_url, params: { product: { name: @product.name, images: attach_product_images([ "people-tshirts.jpg", "red-tshirts.jpg", "single-tshirt.jpg" ]) } }
     assert_redirected_to product_url(Product.last)
   end
+
+  test "should get edit" do
+    sign_in @admin
+    get edit_product_url(@product)
+    assert_response :success
+  end
 end

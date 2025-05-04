@@ -52,7 +52,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
           description: "Test Test Test 123",
           images: attach_product_images([ "people-tshirts.jpg", "red-tshirts.jpg", "single-tshirt.jpg" ]),
           price: 25,
-          category: @category.id
+          category_id: @category.id
         }
       }
     end
@@ -66,7 +66,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         description: "Test Test Test 123",
         images: attach_product_images([ "people-tshirts.jpg", "red-tshirts.jpg", "single-tshirt.jpg" ]),
         price: 25,
-        category: @category.id
+        category_id: @category.id
       }
     }
     assert_redirected_to product_url(Product.last)
@@ -76,5 +76,11 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     sign_in @admin
     get edit_product_url(@product)
     assert_response :success
+  end
+
+  test "should update product" do
+    sign_in @admin
+    patch edit_product_url(@product), params: 
+
   end
 end

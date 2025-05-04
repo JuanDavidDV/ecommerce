@@ -89,4 +89,17 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     }
     assert_equal 100, @product.reload.price
   end
+
+  test "should redirect after product update" do
+    sign_in @admin
+    patch product_url(@product), params: {
+      product: {
+        name: "Test Update",
+        images: attach_product_images([ "people-tshirts.jpg", "red-tshirts.jpg", "single-tshirt.jpg" ]),
+        price: 100
+      }
+    }
+
+    assert_redirected_to product_url(@product)
+  end
 end

@@ -80,7 +80,13 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update product" do
     sign_in @admin
-    patch edit_product_url(@product), params: 
-
+    patch product_url(@product), params: {
+      product: {
+         name: "Test Update",
+         images: attach_product_images([ "people-tshirts.jpg", "red-tshirts.jpg", "single-tshirt.jpg" ]),
+         price: 100
+      }
+    }
+    assert_equal 100, @product.reload.price
   end
 end

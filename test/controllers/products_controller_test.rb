@@ -21,6 +21,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @product = products(:one)
+    @category = categories(:one)
     @admin = admins(:one)
 
     attach_multiple_test_images(@product, [ "people-tshirts.jpg", "red-tshirts.jpg", "single-tshirt.jpg" ])
@@ -45,13 +46,29 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should create product" do
     sign_in @admin
     assert_difference("Product.count", 1) do
-      post products_url, params: { product: { name: @product.name, images: attach_product_images([ "people-tshirts.jpg", "red-tshirts.jpg", "single-tshirt.jpg" ]) } }
+      post products_url, params: {
+        product: {
+          name: @product.name,
+          description: "Test Test Test 123",
+          images: attach_product_images([ "people-tshirts.jpg", "red-tshirts.jpg", "single-tshirt.jpg" ]),
+          price: 25,
+          category: @category.id
+        }
+      }
     end
   end
 
   test "should redirect after product create" do
     sign_in @admin
-    post products_url, params: { product: { name: @product.name, images: attach_product_images([ "people-tshirts.jpg", "red-tshirts.jpg", "single-tshirt.jpg" ]) } }
+    post products_url, params: {
+      product: {
+        name: @product.name,
+        description: "Test Test Test 123",
+        images: attach_product_images([ "people-tshirts.jpg", "red-tshirts.jpg", "single-tshirt.jpg" ]),
+        price: 25,
+        category: @category.id
+      }
+    }
     assert_redirected_to product_url(Product.last)
   end
 

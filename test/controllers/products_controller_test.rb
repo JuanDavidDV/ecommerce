@@ -13,7 +13,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     )
   end
 
-  def attach_product_images(images) # Used for create and update tests
+  def attach_product_images(images) # Used for create and update images
     images.map do |image|
       fixture_file_upload("images/#{image}")
     end
@@ -101,5 +101,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_redirected_to product_url(@product)
+  end
+
+  test "should destroy product" do
+    sign_in @admin
+    assert_difference("Product.count", -1) do
+      delete product_url(@product)
+    end
   end
 end

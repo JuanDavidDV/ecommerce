@@ -109,4 +109,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       delete product_url(@product)
     end
   end
+
+  test "should redirect after destroy a product" do
+    sign_in @admin
+    delete product_url(@product)
+    assert_redirected_to products_url
+  end
 end

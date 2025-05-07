@@ -116,7 +116,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to products_url
   end
 
-  test "should export products as CSV respond successfully" do
+  test "should get successfully CSV response" do
     sign_in @admin
     get export_csv_products_url(format: :csv)
     assert_response :success

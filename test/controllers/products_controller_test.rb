@@ -127,4 +127,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     get export_csv_products_url(format: :csv)
     assert_equal "text/csv", response.media_type
   end
+
+  test "should include correct header in CSV export file" do
+    sign_in @admin
+    get export_csv_products_url(format: :csv)
+    assert_equal "Name,Price $CAD,Category", response.body.lines.first.strip
+  end
 end

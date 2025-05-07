@@ -133,4 +133,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     get export_csv_products_url(format: :csv)
     assert_equal "Name,Price $CAD,Category", response.body.lines.first.strip
   end
+
+  test "should include product name in CSV file" do
+    sign_in @admin
+    get export_csv_products_url(format: :csv)
+    assert_includes response.body, @product.name
+  end
 end

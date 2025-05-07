@@ -121,4 +121,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     get export_csv_products_url(format: :csv)
     assert_response :success
   end
+
+  test "should return CSV content type" do
+    sign_in @admin
+    get export_csv_products_url(format: :csv)
+    assert_equal "text/csv", response.media_type
+  end
 end

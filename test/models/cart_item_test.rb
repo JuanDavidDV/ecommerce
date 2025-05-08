@@ -24,4 +24,8 @@ class CartItemTest < ActiveSupport::TestCase
   test "should belong to cart" do
     assert_equal @cart, @cart_item.cart
   end
+
+  test "should belong to product" do
+    assert_equal @product, @cart_item.product
+  end
 end

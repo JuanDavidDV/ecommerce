@@ -15,4 +15,9 @@ class CartItemTest < ActiveSupport::TestCase
     @cart_item.cart = nil
     assert_not @cart_item.valid?
   end
+
+  test "should be invalid without a product" do
+    @cart_item.product = nil
+    assert_not @cart_item.valid?
+  end
 end

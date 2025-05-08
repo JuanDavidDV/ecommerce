@@ -20,4 +20,8 @@ class CartItemTest < ActiveSupport::TestCase
     @cart_item.product = nil
     assert_not @cart_item.valid?
   end
+
+  test "should belong to cart" do
+    assert_equal @cart, @cart_item.cart
+  end
 end

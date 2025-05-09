@@ -19,4 +19,9 @@ class CartTest < ActiveSupport::TestCase
     @cart.save!
     assert_not_nil @cart.secret_id
   end
+
+  test "should have default status as pending" do
+    @cart.save!
+    assert_equal "pending", @cart.status
+  end
 end

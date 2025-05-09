@@ -14,4 +14,9 @@ class CartTest < ActiveSupport::TestCase
     @cart.user = nil
     assert @cart.valid?
   end
+
+  test "should set secret_id before create" do
+    @cart.save!
+    assert_not_nil @cart.secret_id
+  end
 end

@@ -36,4 +36,8 @@ class CartTest < ActiveSupport::TestCase
       @cart.destroy
     end
   end
+
+  test "should have many products through cart_items" do
+    assert_respond_to @cart, :products
+  end
 end

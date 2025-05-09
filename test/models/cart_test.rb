@@ -24,4 +24,10 @@ class CartTest < ActiveSupport::TestCase
     @cart.save!
     assert_equal "pending", @cart.status
   end
+
+  test "should allow to change the status to complete" do
+    @cart.save!
+    @cart.complete!
+    assert_equal "complete", @cart.status
+  end
 end

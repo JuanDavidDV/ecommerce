@@ -30,4 +30,10 @@ class CartTest < ActiveSupport::TestCase
     @cart.complete!
     assert_equal "complete", @cart.status
   end
+
+  test "should destroy associated cart_items on destroy" do
+    assert_difference("CartItem.count", -@cart.cart_items.count) do
+      @cart.destroy
+    end
+  end
 end

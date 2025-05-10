@@ -13,4 +13,8 @@ class CategoryTest < ActiveSupport::TestCase
     @category.name = nil
     assert_not @category.valid?
   end
+
+  test "should respond to products association" do
+    assert_respond_to @category, :products
+  end
 end

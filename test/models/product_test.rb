@@ -5,5 +5,7 @@ class ProductTest < ActiveSupport::TestCase
     @product = products(:one)
   end
 
-  
+  test "should be valid with name and price" do
+    assert @product.valid?
+  end
 end

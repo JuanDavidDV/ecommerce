@@ -18,4 +18,8 @@ class ProductTest < ActiveSupport::TestCase
     @product.price = nil
     assert_not @product.valid?
   end
+
+  test "should respond to category association" do
+    assert_respond_to @product, :category
+  end
 end

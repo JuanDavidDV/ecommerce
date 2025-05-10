@@ -13,4 +13,9 @@ class ProductTest < ActiveSupport::TestCase
     @product.name = nil
     assert_not @product.valid?
   end
+
+  test "should not be valid without a price" do
+    @product.price = nil
+    assert_not @product.valid?
+  end
 end

@@ -8,4 +8,9 @@ class ProductTest < ActiveSupport::TestCase
   test "should be valid with name and price" do
     assert @product.valid?
   end
+
+  test "should not be valid without a name" do
+    @product.name = nil
+    assert_not @product.valid?
+  end
 end

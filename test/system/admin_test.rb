@@ -7,11 +7,11 @@ class AdminTest < ApplicationSystemTestCase
   test "should login as an Admin" do
     visit new_admin_session_url
     fill_in "Email", with: @admin.email
-    fill_in "Password", with: "admin123"
+    fill_in "Password", with: "Password"
     click_on "Log in"
 
     using_wait_time(10) do
-      assert_selector
+      assert_text "Admin Mode"
     end
   end
 end

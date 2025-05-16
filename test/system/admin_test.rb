@@ -1,4 +1,5 @@
 require "application_system_test_case"
+
 class AdminTest < ApplicationSystemTestCase
   setup do
     @admin = admins(:one)

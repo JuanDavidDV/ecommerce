@@ -23,4 +23,10 @@ class AdminTest < ApplicationSystemTestCase
     click_on "Admin Mode"
     assert_selector "h1", text: "Welcome to Admin Mode!"
   end
+
+  test "should sign out Admin" do
+    log_in_admin
+    click_on "Sign Out"
+    assert_text "Signed out successfully."
+  end
 end

@@ -12,4 +12,11 @@ class BuyNowTest < ApplicationSystemTestCase
       assert_text "Soccer"
     end
   end
+
+  test "should get success page" do
+    visit success_product_buy_now_url(@product)
+    using_wait_time(10) do
+      assert_text "Purchase has been successfully completed"
+    end
+  end
 end

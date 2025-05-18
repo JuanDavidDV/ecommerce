@@ -29,4 +29,13 @@ class CartsTest < ApplicationSystemTestCase
     visit cart_url
     assert_text "You don't have any itmes in your car yet. To checkout please first add items."
   end
+
+  test "should show products in the cart" do
+    visit product_url(@product_one)
+    click_on "Add To Cart"
+    visit product_url(@product_two)
+    click_on "Add To Cart"
+    visit cart_url
+    assert_text "You have 2 items in your cart"
+  end
 end

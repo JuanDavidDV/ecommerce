@@ -9,3 +9,8 @@ two:
   name: Basketball
   price: 100
   category: two
+
+three:
+  name: Tennis
+  price: 85
+  category: one

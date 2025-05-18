@@ -2,17 +2,26 @@ require "application_system_test_case"
 
 class CartsTest < ApplicationSystemTestCase
   setup do
-    @product = products(:one)
+    @product_one = products(:one)
+    @product_two = products(:two)
+    @product_three = products(:three)
     @cart = carts(:one)
     @user = users(:one)
   end
 
   test "should add one product to a cart" do
-    visit product_url(@product)
-    using_wait_time(10) do
-      click_on "Add To Cart"
-    end
-
+    visit product_url(@product_one)
+    click_on "Add To Cart"
     assert_selector "div.bg-white.border.border-black", text: "1", wait: 5
+  end
+
+  test "should add multiple products to a cart" do
+    visit product_url(@product_one)
+    click_on "Add To Cart"
+    visit product_url(@product_two)
+    click_on "Add To Cart"
+    visit product_url(@product_three)
+    click_on "Add To Cart"
+    assert_selector "div.bg-white.border.border-black", text: "3", wait: 5
   end
 end

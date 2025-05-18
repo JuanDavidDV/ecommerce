@@ -38,4 +38,13 @@ class CartsTest < ApplicationSystemTestCase
     visit cart_url
     assert_text "You have 2 items in your cart"
   end
+
+  test "should remove item from cart" do
+    visit product_url(@product_one)
+    click_on "Add To Cart"
+    visit root_url
+    visit cart_url
+    click_on "Remove From Cart"
+    assert_text "You don't have any itmes in your car yet. To checkout please first add items."
+  end
 end

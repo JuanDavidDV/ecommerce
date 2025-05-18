@@ -24,4 +24,9 @@ class CartsTest < ApplicationSystemTestCase
     click_on "Add To Cart"
     assert_selector "div.bg-white.border.border-black", text: "3", wait: 5
   end
+
+  test "should not allow to checkout if cart is empty" do
+    visit cart_url
+    assert_text "You don't have any itmes in your car yet. To checkout please first add items."
+  end
 end

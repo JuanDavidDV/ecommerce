@@ -47,4 +47,12 @@ class CartsTest < ApplicationSystemTestCase
     click_on "Remove From Cart"
     assert_text "You don't have any itmes in your car yet. To checkout please first add items."
   end
+
+  test "should go to checkout page" do
+    visit product_url(@product_one)
+    click_on "Add To Cart"
+    visit root_url
+    visit checkout_cart_url
+    assert_selector "h1", text: "Your Cart"
+  end
 end

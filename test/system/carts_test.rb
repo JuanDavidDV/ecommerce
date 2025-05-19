@@ -55,4 +55,8 @@ class CartsTest < ApplicationSystemTestCase
     visit checkout_cart_url
     assert_selector "h1", text: "Your Cart"
   end
+
+  test "should go to the success page" do
+    
+  end
 end

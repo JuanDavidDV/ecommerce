@@ -57,6 +57,8 @@ class CartsTest < ApplicationSystemTestCase
   end
 
   test "should go to the success page" do
-    
+    visit product_url(@product_one)
+    click_on "Add To Cart"
+    visit root_url
   end
 end
